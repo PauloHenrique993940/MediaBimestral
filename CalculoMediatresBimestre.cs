@@ -1,37 +1,37 @@
 using System;
 
-namespace MediatrêsNotas
+namespace MediatrêsNotas.obj
 {
-    public class Aluno
+    public class CalculoMediatresBimestre
     {
-        public string Nome { get; set; }
-        public int Nota1 { get; set; }
-        public int Nota2 { get; set; }
-        public int Nota3 { get; set; }
-
-        public float MediaFinal()
+        public class Aluno
         {
-            // Calculando a média final com os pesos 30%, 35% e 35% 
-            return (Nota1 * 0.3f + Nota2 * 0.35f + Nota3 * 0.35f);
+            public string Nome { get; set; }
+            public int Nota1 { get; set; }
+            public int Nota2 { get; set; }
+            public int Nota3 { get; set; }
+
+            public float MediaFinal()
+            {
+                // Calculando a média final com os pesos 30%, 35% e 35% 
+                return (Nota1 * 0.3f + Nota2 * 0.35f + Nota3 * 0.35f);
+            }
+
+            public bool Aprovado(int mediaMinima)
+            {
+                return MediaFinal() >= mediaMinima;
+            }
+
+            public int FaltaParaObterMedia(int mediaMinima)
+            {
+                int faltaParaObterMedia = (int)(mediaMinima - MediaFinal() + 0.5f); // Arredonda para cima
+                return faltaParaObterMedia;
+            }
         }
 
-        public bool Aprovado(int mediaMinima)
+        public static void Main(string[] args)
         {
-            return MediaFinal() >= mediaMinima;
-        }
-
-        public int FaltaParaObterMedia(int mediaMinima)
-        {
-            int faltaParaObterMedia = mediaMinima - (int)MediaFinal();
-            return faltaParaObterMedia;
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int mediaMinima = 60; 
+            int mediaMinima = 60;
 
             // Criando uma instância da classe Aluno
             Aluno aluno = new Aluno();
@@ -67,3 +67,4 @@ namespace MediatrêsNotas
         }
     }
 }
+
