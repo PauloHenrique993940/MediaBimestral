@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace MediatrêsNotas.obj
 {
@@ -24,7 +27,7 @@ namespace MediatrêsNotas.obj
 
             public int FaltaParaObterMedia(int mediaMinima)
             {
-                int faltaParaObterMedia = (int)(mediaMinima - MediaFinal() + 0.5f); // Arredonda para cima
+                int faltaParaObterMedia = mediaMinima - (int)MediaFinal();
                 return faltaParaObterMedia;
             }
         }
@@ -67,4 +70,3 @@ namespace MediatrêsNotas.obj
         }
     }
 }
-
